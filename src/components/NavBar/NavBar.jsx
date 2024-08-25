@@ -5,8 +5,8 @@ import CartWidget from '../CartWidget/CartWidget'
 const NavBar = () => {
   return (
     <header>
-        <img className="logoHeader" src="../../../public/logo_eterna_joyas.png" alt="Logo Eterna Joyas" />
-
+        <a href="../../../index.html"><img className="logoHeader" src="../../../public/logo_eterna_joyas.png" alt="Logo Eterna Joyas" /></a>
+        
         <nav>
             <ul>
                 <li>Todos</li>
