@@ -1,0 +1,15 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid gold;
+    background-color: rgb(27, 26, 26);
+    .logoHeader{
+        width: 100px;
+        height: 100px;
+    }
+    li{
+        display: inline-block;
+        margin: 10px;
+    }
+}
