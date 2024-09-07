@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <ItemListContainer greeting="Eterna Joyas: Elegancia y Calidad que Perdura"/>
+      <ItemListContainer/>
     </>
   )
 }
