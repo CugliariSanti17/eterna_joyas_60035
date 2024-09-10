@@ -7,14 +7,14 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
 
   useEffect(() =>{
-    getProducts
+    getProducts()
       .then(response => setProductos(response))
       .catch(error => console.log(error))
   }, []);
 
   return (
     <div>
-        <h1>Lista de productos</h1>
+        <h1 className='productsTitle'>Lista de productos</h1>
         <ItemList productos={productos}/>
     </div>
   )
