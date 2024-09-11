@@ -14,3 +14,11 @@ export const getProducts = () => {
         }, 100)
     })
 }
+
+export const getProduct = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const product = listaProductos.find(producto => producto.id === id)
+        }, 100)
+    })
+}
