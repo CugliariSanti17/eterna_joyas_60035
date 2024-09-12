@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ItemDetail.css"
 
 const ItemDetail = ({nombre, precio, descripcion, img}) => {
   return (
@@ -8,8 +9,8 @@ const ItemDetail = ({nombre, precio, descripcion, img}) => {
         </div>
         <div className='cardDetailInfo'>
             <h3>{nombre}</h3>
-            <p>{descripcion}</p>
-            <p>{precio}</p>
+            <p className='itemDescription'>{descripcion}</p>
+            <p className='itemPrice'>${precio}</p>
         </div>
     </div>
   )

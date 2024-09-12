@@ -4,12 +4,12 @@ import { getProduct } from '../../asynmock'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useEffect(null)
+    const [product, setProduct] = useState(null)
 
     useEffect(() => {
-        getProduct(1) // El id del producto debe ser reemplazado por el prop id que recibe
-           .then(response => setProduct(response))
-           .catch(error => console.log(error))
+      getProduct(1)
+        .then(response => setProduct(response))
+        .catch(error => console.log(error))
     }, [])
 
   return (
