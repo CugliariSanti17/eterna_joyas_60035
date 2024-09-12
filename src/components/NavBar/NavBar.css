@@ -13,6 +13,18 @@ header{
         display: inline-block;
         margin: 25px;
         color: white;
-        font-size: 17px;
+        font-size: 20px;
+        text-decoration: none;
+        &:hover{
+            color: gold;
+        }
+    .navLink{
+        color: white;
+        text-decoration: none;
+        &:hover{
+            color: gold;
+            text-decoration: underline;
+        }
+    }
     }
 }

@@ -7,10 +7,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 const App = () => {
   return (
     <>
-      <NavBar />
-      <ItemListContainer/>
-      
-      <ItemDetailContainer/>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/item/:idItem" element={<ItemDetailContainer />} />
+          <Route path="/category/:idCategory" element={<ItemListContainer />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

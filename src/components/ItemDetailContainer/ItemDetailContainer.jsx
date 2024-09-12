@@ -2,15 +2,19 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { getProduct } from '../../asynmock'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import { useParams } from 'react-router-dom'
+
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState(null)
 
-    useEffect(() => {
-      getProduct(1)
-        .then(response => setProduct(response))
-        .catch(error => console.log(error))
-    }, [])
+  const {idItem} = useParams()
+
+  useEffect(() => {
+    getProduct(1)
+      .then(response => setProduct(response))
+      .catch(error => console.log(error))
+  }, [idItem])
 
   return (
     <div>
