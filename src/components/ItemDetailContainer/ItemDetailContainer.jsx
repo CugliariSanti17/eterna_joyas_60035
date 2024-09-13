@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
   const {idItem} = useParams()
 
   useEffect(() => {
-    getProduct(1)
+    getProduct(idItem)
       .then(response => setProduct(response))
       .catch(error => console.log(error))
   }, [idItem])
