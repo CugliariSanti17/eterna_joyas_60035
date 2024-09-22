@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import "./ItemDetail.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useContador } from '../../custom-hooks/useContador';
+import { cartContext } from '../../context/cartContext';
 
-const ItemDetail = ({nombre, precio, descripcion, img, stock}) => {
+const ItemDetail = ({id, nombre, precio, descripcion, img, stock}) => {
 
   const {contador, aumentar, disminuir} = useContador(1, stock);
+
+  const [cantidadTotal, setCantidadTotal] = useState(0)
+
+  const {agregarItem} = useContext(cartContext)
+
+  const agregarCantidad = (cantidad) =>{
+    setCantidadTotal(cantidad)
+    //console.log(cantidad)
+    const item = {id, nombre, precio}
+    agregarItem(item, cantidad)
+  }
 
   return (
     <div className='cardDetailContainer'>
@@ -21,7 +33,7 @@ const ItemDetail = ({nombre, precio, descripcion, img, stock}) => {
         <button onClick={disminuir} className='countButton'>-</button>
         <strong className='countNumber'>{contador}</strong>
         <button onClick={aumentar} className='countButton'>+</button>
-        <button className='itemButton'>Agregar al carrito</button>
+        <button onClick={() => agregarCantidad(contador)} className='itemButton'>Agregar al carrito</button>
         <Link to={"/"}><FontAwesomeIcon icon={faArrowLeftLong} className='itemIcon'/></Link>
       </div>
     </div>

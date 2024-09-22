@@ -6,25 +6,30 @@ export const cartContext = createContext({
     cantidadTotal: 0,
 })
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({children}) => {
     const [carrito, setCarrito] = useState([])
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
 
     const agregarItem = (item, cantidad) => {
-        const itemExiste = carrito.find(i => i.id === item.id)
+        const itemExiste = carrito.find(producto => producto.item.id === item.id)
         
         if (!itemExiste) {
             setCarrito(prev => [...prev, {item, cantidad }])
             setCantidadTotal(prev =>{prev + cantidad})
             setTotal(prev => prev +  (item.precio * cantidad))
         }else{
-            const index = carrito.indexOf(itemExiste)
-            const nuevoCarrito = [...carrito]
-            nuevoCarrito[index].cantidad += cantidad
-            setCarrito(nuevoCarrito)
+            const carritoActualizado = carrito.map( producto =>{
+                if(producto.item.id === item.id){
+                    return {...producto, cantidad: producto.cantidad + cantidad}
+                }else{
+                    return item
+                }
+            })
+
+            setCarrito(carritoActualizado)
             setCantidadTotal(prev => prev + cantidad)
-            setTotal(prev => prev +  (item.precio * cantidad))
+            setTotal(prev => prev + (item.precio * cantidad))
         }
     }
 
