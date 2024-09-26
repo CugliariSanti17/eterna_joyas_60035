@@ -16,8 +16,7 @@ const ItemDetail = ({id, nombre, precio, descripcion, img, stock}) => {
 
   const agregarCantidad = (cantidad) =>{
     setCantidadTotal(cantidad)
-    //console.log(cantidad)
-    const item = {id, nombre, precio}
+    const item = {id, nombre, precio, img, stock}
     agregarItem(item, cantidad)
   }
 

@@ -3,9 +3,9 @@ import {useState} from "react"
 export const useContador = (valorInicial, valorFinal)=>{
     const [contador, setContador] = useState(valorInicial);
 
-    const aumentar = ()  =>{
+    const aumentar = (item)  =>{
         if(contador < valorFinal){
-            setContador(contador+1);
+            setContador(contador+1)
         }
     }
 
