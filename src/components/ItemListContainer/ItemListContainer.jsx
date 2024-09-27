@@ -1,29 +1,49 @@
-import React, { useEffect, useState} from 'react'
+import React, { cloneElement, useEffect, useState} from 'react'
 import "./ItemListContainer.css"
-import { getProducts } from '../../asynmock'
 import ItemList from '../ItemList/ItemList'
-import { getCategories } from '../../asynmock'
 import { useParams } from 'react-router-dom'
+import { db } from '../../service/config'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import Loader from '../Loader/Loader'
+
 
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
 
+  const [loader, setLoader] = useState(false)
+
   const {idCategory} = useParams()
 
   useEffect(() =>{
-    const productFunction = idCategory ? getCategories : getProducts;
-    productFunction(idCategory)
-     .then(response => setProductos(response))
-     .catch(error => console.log(error))
+    setLoader(true)
+    const myProducts = idCategory ? query(collection(db, "productos"), where("idCategory", "==", idCategory)) : (collection(db, "productos"))
+    getDocs(myProducts)
+    .then(res => {
+     const newProducts = res.docs.map(doc =>{
+      const data = doc.data()
+      return {id:doc.id, ...data}
+     })
+     setProductos(newProducts)
+    })
+    .catch(error => {
+      console.log("Error getting documents: ", error);
+    })
+    .finally(() =>{
+      console.log("Proceso terminado")
+      setLoader(false)
+    })
   }, [idCategory]);
 
-  return (
-    <div>
-        <h1 className='productsTitle'>Lista de productos</h1>
-        <ItemList productos={productos}/>
-    </div>
+  return(
+    <>
+      <h2 className='productsTitle'>Lista de productos</h2>   
+      {loader ? <Loader/> : <ItemList productos={productos}/>} 
+    </>
   )
+
 }
+
+
 
 export default ItemListContainer
