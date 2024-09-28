@@ -9,14 +9,16 @@ import Loader from '../Loader/Loader'
 
 
 const ItemListContainer = () => {
+
   const [productos, setProductos] = useState([])
 
-  const [loader, setLoader] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const {idCategory} = useParams()
 
   useEffect(() =>{
-    setLoader(true)
+    setLoading(true)
+
     const myProducts = idCategory ? query(collection(db, "productos"), where("idCategory", "==", idCategory)) : (collection(db, "productos"))
     getDocs(myProducts)
     .then(res => {
@@ -31,14 +33,14 @@ const ItemListContainer = () => {
     })
     .finally(() =>{
       console.log("Proceso terminado")
-      setLoader(false)
+      setLoading(false)
     })
   }, [idCategory]);
 
   return(
     <>
       <h2 className='productsTitle'>Lista de productos</h2>   
-      {loader ? <Loader/> : <ItemList productos={productos}/>} 
+      {loading ? <Loader/> : <ItemList productos={productos}/>} 
     </>
   )
 

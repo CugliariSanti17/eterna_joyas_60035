@@ -1,12 +1,14 @@
 import React from 'react'
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from 'react-bootstrap/Spinner';
+import "./Loader.css"
 
-const Loader = () => {
+function Loader() {
   return (
     <div className='spinnerContainer'>
-        <Spinner className='spinner' animation="border"/>
+      <Spinner className="spinner" animation="border" role="status" />
     </div>
-  )
+  );
 }
 
-export default Loader
+export default Loader;
+
