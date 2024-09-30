@@ -5,6 +5,7 @@ import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useContador } from '../../custom-hooks/useContador';
 import { cartContext } from '../../context/cartContext';
+import { toast } from 'react-toastify';
 
 const ItemDetail = ({id, nombre, precio, descripcion, img, stock}) => {
 
@@ -18,6 +19,17 @@ const ItemDetail = ({id, nombre, precio, descripcion, img, stock}) => {
     setCantidadTotal(cantidad)
     const item = {id, nombre, precio, img, stock}
     agregarItem(item, cantidad)
+    toast.success('¡Producto agregado al carrito!',{
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+      style:{top: "80px"}
+    })
   }
 
   return (

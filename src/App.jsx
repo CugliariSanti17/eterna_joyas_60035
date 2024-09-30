@@ -7,7 +7,8 @@ import { CartProvider } from './context/cartContext'
 import Cart from './components/Cart/Cart'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from './components/Checkout/Checkout'
-
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/checkout" element={<Checkout />}/>
           </Routes>
         </CartProvider>
+        <ToastContainer />
       </BrowserRouter>
     </>
   )
