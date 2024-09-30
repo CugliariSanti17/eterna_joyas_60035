@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import "./Checkout.css"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {cartContext} from '../../context/cartContext'
 import {db} from '../../service/config'
-import {collection, addDoc} from 'firebase/firestore'
+import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore'
 
 const Checkout = () => {
 
@@ -21,7 +21,7 @@ const Checkout = () => {
     const formHandled = (e) =>{
         e.prevenDefault()
 
-        if(nombre === "" || apellido === "" || telefono === "" || email === "" || confirmacionEmail === "" || direccion === ""){
+        if(!nombre || !apellido || !telefono || !email || !confirmacionEmail|| !direccion){
             setError("Todos los campos son obligatorios")
             return
         }
@@ -48,35 +48,66 @@ const Checkout = () => {
             direccion,
         }
 
-        addDoc(collection(db, "ordenesCompra", ordenCompra))
+        Promise.all(
+            ordenCompra.items.map (async (productoOrden) => {
+                const productoRef = doc(db, "productos", productoOrden.id)
+
+                const productoDoc = await getDoc(productoRef)
+                const stockActual = productoDoc.data().stock
+
+                await updateDoc(productoRef, {
+                    stock: stockActual - productoOrden.cantidad
+                })
+            })
+        )
+        .then(() =>{
+            addDoc(collection(db, "ordenesCompra"), ordenCompra)
             .then(docRef =>{
                 setOrdenId(docRef.id)
                 vaciarCarrito()
+                
+                setNombre("")
+                setApellido("")
+                setTelefono("")
+                setEmail("")
+                setConfirmacionEmail("")
+                setDireccion("")
                 setError("")
             })
             .catch(error => {
                 setError("Hubo un error al procesar la orden de compra. Intente nuevamente")
                 console.error(error)
             })
+        })
+        .catch(error => {
+            console.log("Error al actualizar el stock del producto", error)
+            setError("Hubo un error en el actualizamiento del producto")
+        })
     }
     
   return (
-    <div>
+    <div className='checkoutContainer'>
         <h2>Checkout</h2>
 
         <form onSubmit={formHandled}>
             <label htmlFor="">Nombre:</label>
-            <input type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} value={nombre}/>
+            <input type="text" placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} value={nombre}/>
+
             <label htmlFor="">Apellido:</label>
-            <input type="text" placeholder="Apellido" onChange={e => setApellido(e.target.value)} value={apellido}/>
+            <input type="text" placeholder="Apellido" onChange={(e) => setApellido(e.target.value)} value={apellido}/>
+
             <label htmlFor="">Telefono:</label>
-            <input type="text" placeholder="Teléfono" onChange={e => setTelefono(e.target.value)} value={telefono}/>
+            <input type="text" placeholder="Teléfono" onChange={(e) => setTelefono(e.target.value)} value={telefono}/>
+
             <label htmlFor="">Email:</label>
-            <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}/>
+            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+
             <label htmlFor="">Confirmar Email:</label>
-            <input type="email" placeholder="Confirmar Email" onChange={e => setConfirmacionEmail(e.target.value)} value={confirmacionEmail}/>
+            <input type="email" placeholder="Confirmar Email" onChange={(e) => setConfirmacionEmail(e.target.value)} value={confirmacionEmail}/>
+
             <label htmlFor="">Dirección:</label>
-            <input type="text" placeholder="Dirección" onChange={e => setDireccion(e.target.value)} value={direccion}/>
+            <input type="text" placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)} value={direccion}/>
+
             {
                 error && <p className="errorCheckout">{error}</p>
             }
