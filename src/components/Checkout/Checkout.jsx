@@ -19,7 +19,7 @@ const Checkout = () => {
     const {carrito, vaciarCarrito, total, totalCantidad} = useContext(cartContext)
 
     const formHandled = (e) =>{
-        e.prevenDefault()
+        e.preventDefault()
 
         if(!nombre || !apellido || !telefono || !email || !confirmacionEmail|| !direccion){
             setError("Todos los campos son obligatorios")
