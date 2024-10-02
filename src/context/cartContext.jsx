@@ -40,7 +40,7 @@ export const CartProvider = ({children}) => {
 
         setCarrito(nuevoCarrito)
         setCantidadTotal(prev => prev - itemEliminado.cantidad)
-        setTotal(prev => prev - (itemEliminado.precio * itemEliminado.cantidad))
+        setTotal(prev => prev - (itemEliminado.item.precio * itemEliminado.cantidad))
     }
 
     const vaciarCarrito = () =>{

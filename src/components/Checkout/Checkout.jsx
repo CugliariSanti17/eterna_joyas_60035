@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import "./Checkout.css"
-import { useState } from 'react'
+import { useState, useContext} from 'react'
 import {cartContext} from '../../context/cartContext'
 import {db} from '../../service/config'
 import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore'
@@ -31,7 +31,7 @@ const Checkout = () => {
             return
         }
 
-        const ordenCompra = {
+        const orden = {
             items: carrito.map (producto =>({
                 id: producto.item.id,
                 nombre: producto.item.nombre,
@@ -49,7 +49,7 @@ const Checkout = () => {
         }
 
         Promise.all(
-            ordenCompra.items.map (async (productoOrden) => {
+            orden.items.map (async (productoOrden) => {
                 const productoRef = doc(db, "productos", productoOrden.id)
 
                 const productoDoc = await getDoc(productoRef)
@@ -61,11 +61,11 @@ const Checkout = () => {
             })
         )
         .then(() =>{
-            addDoc(collection(db, "ordenesCompra"), ordenCompra)
+        addDoc(collection(db, "ordenes"), orden)
             .then(docRef =>{
                 setOrdenId(docRef.id)
                 vaciarCarrito()
-                
+                    
                 setNombre("")
                 setApellido("")
                 setTelefono("")
