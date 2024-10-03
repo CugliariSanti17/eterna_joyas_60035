@@ -63,7 +63,8 @@ const Checkout = () => {
         .then(() =>{
         addDoc(collection(db, "ordenes"), orden)
             .then(docRef =>{
-                setOrdenId(docRef.id)
+                const nuevaOrdenId = docRef.id
+                setOrdenId(nuevaOrdenId)
                 vaciarCarrito()
 
                 const templateParams = {
@@ -71,7 +72,7 @@ const Checkout = () => {
                     from_email: email,
                     to_name: 'Eterna Joyas',
                     subject: 'Orden de compra realizada',
-                    text: `Orden de compra #${ordenId}\nTotal: ${total}\nItems: ${orden.items.map(item => `${item.nombre} - ${item.precio} x ${item.cantidad}`).join('\n')}`
+                    text: `Orden de compra #${nuevaOrdenId}\nTotal: ${total}\nItems: ${orden.items.map(item => `${item.nombre} - ${item.precio} x ${item.cantidad}`).join('\n')}`
                 }
         
                 emailjs.send(
