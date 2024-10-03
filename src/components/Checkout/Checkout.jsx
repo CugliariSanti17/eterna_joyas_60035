@@ -4,6 +4,7 @@ import { useState, useContext} from 'react'
 import {cartContext} from '../../context/cartContext'
 import {db} from '../../service/config'
 import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore'
+import emailjs from "@emailjs/browser"
 
 const Checkout = () => {
 
@@ -39,7 +40,6 @@ const Checkout = () => {
                 cantidad: producto.cantidad
             })),
             total: total,
-            cantidadTotal: totalCantidad,
             fecha: new Date(),
             nombre,
             apellido,
@@ -65,6 +65,27 @@ const Checkout = () => {
             .then(docRef =>{
                 setOrdenId(docRef.id)
                 vaciarCarrito()
+
+                const templateParams = {
+                    from_name: nombre,
+                    from_email: email,
+                    to_name: 'Eterna Joyas',
+                    subject: 'Orden de compra realizada',
+                    text: `Orden de compra #${ordenId}\nTotal: ${total}\nItems: ${orden.items.map(item => `${item.nombre} - ${item.precio} x ${item.cantidad}`).join('\n')}`
+                }
+        
+                emailjs.send(
+                    "service_9ufa2zi",
+                    "template_0yc5qqm",
+                    templateParams,
+                    "Gg-9SlmMdkXxWbN9H"
+                )
+                .then((response) => {
+                    console.log("Correo enviado con éxito!", response.status, response.text);
+                })
+                .catch((error) => {
+                    console.error("Error al enviar el correo:", error);
+                });
                     
                 setNombre("")
                 setApellido("")
