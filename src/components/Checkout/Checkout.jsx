@@ -5,6 +5,9 @@ import {cartContext} from '../../context/cartContext'
 import {db} from '../../service/config'
 import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore'
 import emailjs from "@emailjs/browser"
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 const Checkout = () => {
 
@@ -111,36 +114,49 @@ const Checkout = () => {
     <div className='checkoutContainer'>
         <h2>Checkout</h2>
 
-        <form onSubmit={formHandled}>
-            <label htmlFor="">Nombre:</label>
-            <input type="text" placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} value={nombre}/>
+        { ordenId ? (
+            <div className="orderConfirmation">
+             <div className='imageContainer'>
+               <img src="../../../public/imagen_orden_compra.png"></img>
+             </div>
+             <div className="orderTextContainer">
+               <h1>¡Tu orden ha sido confirmada!</h1>
+               <h2>Recibirás un mail con el detalle de tu compra.</h2>
+               <h4>Tu número de orden es: {ordenId}</h4>
+             </div>
+             <Link to="/" className="backButton">
+               <FontAwesomeIcon icon={faArrowLeftLong}/>
+               <h4>Volver a comprar</h4>
+             </Link>
+            </div>
+            ) : (
+            <form onSubmit={formHandled}>
+                <label htmlFor="">Nombre:</label>
+                <input type="text" placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} value={nombre}/>
 
-            <label htmlFor="">Apellido:</label>
-            <input type="text" placeholder="Apellido" onChange={(e) => setApellido(e.target.value)} value={apellido}/>
+                <label htmlFor="">Apellido:</label>
+                <input type="text" placeholder="Apellido" onChange={(e) => setApellido(e.target.value)} value={apellido}/>
 
-            <label htmlFor="">Telefono:</label>
-            <input type="text" placeholder="Teléfono" onChange={(e) => setTelefono(e.target.value)} value={telefono}/>
+                <label htmlFor="">Telefono:</label>
+                <input type="text" placeholder="Teléfono" onChange={(e) => setTelefono(e.target.value)} value={telefono}/>
 
-            <label htmlFor="">Email:</label>
-            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                <label htmlFor="">Email:</label>
+                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
 
-            <label htmlFor="">Confirmar Email:</label>
-            <input type="email" placeholder="Confirmar Email" onChange={(e) => setConfirmacionEmail(e.target.value)} value={confirmacionEmail}/>
+                <label htmlFor="">Confirmar Email:</label>
+                <input type="email" placeholder="Confirmar Email" onChange={(e) => setConfirmacionEmail(e.target.value)} value={confirmacionEmail}/>
 
-            <label htmlFor="">Dirección:</label>
-            <input type="text" placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)} value={direccion}/>
+                <label htmlFor="">Dirección:</label>
+                <input type="text" placeholder="Dirección" onChange={(e) => setDireccion(e.target.value)} value={direccion}/>
 
-            {
-                error && <p className="errorCheckout">{error}</p>
-            }
+                {
+                    error && <p className="errorCheckout">{error}</p>
+                }
 
-            <button type='submit'>Confirmar compra</button>
-            {
-                ordenId && (
-                    <strong>¡Gracias por tu compra! Orden de compra: {ordenId}</strong>
-                )
-            }
-        </form>
+                <button type='submit'>Confirmar compra</button>
+            </form>
+            )
+        }
     </div>
   )
 }

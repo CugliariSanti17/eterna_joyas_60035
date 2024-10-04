@@ -68,3 +68,64 @@
 .checkoutContainer button:hover {
     background-color: darkgoldenrod;
 }
+
+.orderConfirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 600px;
+  }
+  
+  .imageContainer {
+    margin-bottom: 20px;
+  }
+  
+  .imageContainer img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .orderTextContainer h1 {
+    color: #4caf50;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .orderTextContainer h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .orderTextContainer h4 {
+    color: #888;
+  }
+  
+  .backButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2196f3;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .backButton:hover {
+    background-color: gold;
+  }
+  
+  .backButton h4 {
+    margin: 0;
+    margin-left: 5px;
+    font-weight: 400;
+  }
