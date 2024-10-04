@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Checkout.css"
-import { useState, useContext} from 'react'
+import { useState, useContext, useEffect} from 'react'
 import {cartContext} from '../../context/cartContext'
 import {db} from '../../service/config'
 import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore'
@@ -8,6 +8,8 @@ import emailjs from "@emailjs/browser"
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import confetti from 'canvas-confetti';
+
 
 const Checkout = () => {
 
@@ -21,6 +23,16 @@ const Checkout = () => {
     const [error, setError] = useState("")
 
     const {carrito, vaciarCarrito, total, totalCantidad} = useContext(cartContext)
+
+    useEffect(() => {
+        if (ordenId) {
+          confetti({
+            particleCount: 200,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        }
+      }, [ordenId]);
 
     const formHandled = (e) =>{
         e.preventDefault()
@@ -109,7 +121,7 @@ const Checkout = () => {
             setError("Hubo un error en el actualizamiento del producto")
         })
     }
-    
+
   return (
     <div className='checkoutContainer'>
         <h2>Checkout</h2>
