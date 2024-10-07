@@ -1,5 +1,4 @@
 import { useState, createContext } from "react";
-import { useContador } from "../custom-hooks/useContador";
 
 export const cartContext = createContext({
     carrito: [],
@@ -49,18 +48,8 @@ export const CartProvider = ({children}) => {
         setTotal(0)
     }
 
-    const disminuirItem = (item) =>{
-        setTotal(prev => prev - (cantidad * item.precio));
-        setCantidadTotal(prev => prev - contador)
-    }
-
-    const aumentarItem = (item, cantidad) =>{
-        setTotal(prev => prev + (cantidad * item.precio));
-        setCantidadTotal(prev => prev + contador)
-    }
-
     return (
-        <cartContext.Provider value={{carrito, cantidadTotal, total, agregarItem, eliminarItem, vaciarCarrito, aumentarItem, disminuirItem}}>
+        <cartContext.Provider value={{carrito, cantidadTotal, total, agregarItem, eliminarItem, vaciarCarrito}}>
             {children}
         </cartContext.Provider>
     )
