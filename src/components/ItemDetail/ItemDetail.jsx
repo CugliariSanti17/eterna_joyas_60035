@@ -11,12 +11,9 @@ const ItemDetail = ({id, nombre, precio, descripcion, img, stock}) => {
 
   const {contador, aumentar, disminuir} = useContador(1, stock);
 
-  const [cantidadTotal, setCantidadTotal] = useState(0)
-
   const {agregarItem} = useContext(cartContext)
 
   const agregarCantidad = (cantidad) =>{
-    setCantidadTotal(cantidad)
     const item = {id, nombre, precio, img, stock}
     agregarItem(item, cantidad)
     toast.success('¡Producto agregado al carrito!',{

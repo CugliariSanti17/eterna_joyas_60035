@@ -1,65 +1,61 @@
 .cartProductContainer {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(251, 182, 9);
-    margin: 20px;
-    padding: 20px;
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(251, 182, 9);
+  margin: 20px;
+  padding: 20px;
+  width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+  position: relative;
   }
   
-  .cartProductContainer:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+.cartProductContainer:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-  .cartProductImage {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 15px;
-  }
+.cartProductImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
   
   
-  .cartProductName {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
+.cartProductName {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
   
-  .cartProductPrice, .cartProductQuantity {
-    color: rgb(63, 61, 61);
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
+.cartProductPrice, .cartProductQuantity {
+  color: rgb(63, 61, 61);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
   
-  .cartProductButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.cartProductButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
   
-  .cartProductDecrease, .cartProductIncrease, .cartProductDelete {
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: gold;
-    color: black;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.2s ease;
-  }
-  
-  .cartProductDecrease:hover, .cartProductIncrease:hover {
-    background-color: darkgoldenrod;
-  }
-  
-  .cartProductDelete {
-    background-color: red;
-  }
-  
-  .cartProductDelete:hover {
+.cartProductDelete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: red;
+  color: black;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+  &:hover {
     background-color: darkred;
   }
+}
+  

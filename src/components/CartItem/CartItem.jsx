@@ -6,7 +6,7 @@ import './CartItem.css'
 
 const CartItem = ({item, cantidad}) => {
 
-  const {eliminarItem, aumentarItem, disminuirItem} = useContext(cartContext)
+  const {eliminarItem} = useContext(cartContext)
   const {contador, aumentar, disminuir} = useContador(1, item.stock)
 
   return (
@@ -16,9 +16,6 @@ const CartItem = ({item, cantidad}) => {
       <p className='cartProductPrice'>Precio: ${item.precio}</p>
       <p className='cartProductQuantity'>Cantidad: {cantidad}</p>
       <div className='cartProductButtons'>
-        <button className='cartProductDecrease' onClick={() => disminuirItem(contador)}>Disminuir</button>
-        <span>{cantidad}</span>
-        <button className='cartProductIncrease' onClick={() => aumentarItem(contador)}>Aumentar</button>
         <button className='cartProductDelete' onClick={() => eliminarItem(item.id)}>X</button>
       </div>
     </div>
