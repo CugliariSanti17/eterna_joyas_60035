@@ -12,6 +12,7 @@ Proyecto realizado para el curso de ReactJS de Coderhouse. El mismo consta de un
 - Toastify
 - React-Boostrap
 - Firebase
+- MetENV
 
 ##Funcionalidades: 
 - Ver una lista de productos

@@ -32,7 +32,6 @@ const ItemListContainer = () => {
       console.log("Error getting documents: ", error);
     })
     .finally(() =>{
-      console.log("Proceso terminado")
       setLoading(false)
     })
   }, [idCategory]);
