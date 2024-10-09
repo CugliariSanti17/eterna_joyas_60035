@@ -1,13 +1,11 @@
 import React from 'react'
 import { useContext } from 'react'
 import { cartContext } from '../../context/cartContext'
-import { useContador } from '../../custom-hooks/useContador'
 import './CartItem.css'
 
 const CartItem = ({item, cantidad}) => {
 
   const {eliminarItem} = useContext(cartContext)
-  const {contador, aumentar, disminuir} = useContador(1, item.stock)
 
   return (
     <div className='cartProductContainer'>

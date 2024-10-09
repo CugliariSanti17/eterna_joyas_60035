@@ -22,7 +22,7 @@ const Checkout = () => {
     const [ordenId, setOrdenId] = useState("")
     const [error, setError] = useState("")
 
-    const {carrito, vaciarCarrito, total, totalCantidad} = useContext(cartContext)
+    const {carrito, vaciarCarrito, total} = useContext(cartContext)
 
     useEffect(() => {
         if (ordenId) {

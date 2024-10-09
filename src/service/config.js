@@ -5,15 +5,14 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAnrqjPx0hwlYFfxOKsq_2W6Mt_0oH7_QI",
-  authDomain: "eterna-joyas-60035.firebaseapp.com",
-  projectId: "eterna-joyas-60035",
-  storageBucket: "eterna-joyas-60035.appspot.com",
-  messagingSenderId: "450743763939",
-  appId: "1:450743763939:web:badf863c8d1e6d7f24d6d6"
+  apiKey: import.meta.env.VITE_API_KEY_FIREBASE,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGE_SENDER,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
