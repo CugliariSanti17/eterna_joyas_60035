@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <header>
       <Link to="/" className="logoLink">
-        <img className="logoHeader" src="../../../public/logo_eterna_joyas.png" alt="Logo Eterna Joyas" />
+        <img className="logoHeader" src="../../../public/img/logo_eterna_joyas.png" alt="Logo Eterna Joyas" />
       </Link>
 
       <nav>
