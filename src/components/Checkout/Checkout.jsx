@@ -129,7 +129,7 @@ const Checkout = () => {
         { ordenId ? (
             <div className="orderConfirmation">
              <div className='imageContainer'>
-               <img src="../../../imagen_orden_compra.png"></img>
+               <img src="../../../img/imagen_orden_compra.png"></img>
              </div>
              <div className="orderTextContainer">
                <h1>¡Tu orden ha sido confirmada!</h1>
