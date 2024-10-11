@@ -20,8 +20,8 @@ Proyecto realizado para el curso de ReactJS de Coderhouse. El mismo consta de un
 - Agregar una cantidad a eleccion de cada producto a través de un contador
 - Agregar el producto al carrito
 - Dentro del carrito podemos ver detallado el/los producto/s a comprar, su precio y su cantidad
-- El carrito incluye la funcionalidad de elimar producto del mismo o limpiar el carrito por completo
-- Incluye un checkout mediante un formulario que genera una orden de compra con su ID particular-
+- El carrito incluye la funcionalidad de eliminar producto o limpiar el carrito por completo
+- Incluye un checkout mediante un formulario que genera una orden de compra con su ID particular
 - Cuando se finaliza la compra se mostraran confetis y mensajes de festejo aclarando que se envio un resumen de compra al e-mail puesto en el formulario del checkout
 
 ##Instalacion:
