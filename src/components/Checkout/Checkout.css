@@ -1,12 +1,11 @@
-.checkoutContainer {
+/*.checkoutContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
     width: 100%;
-    max-width: 600px; /* Limita el ancho máximo para evitar que sea muy grande en pantallas anchas */
-    margin: 50px auto; /* Centra el contenedor y agrega espacio arriba */
+    max-width: 600px;
     border: 1px solid rgb(251, 182, 9);
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -128,4 +127,215 @@
     margin: 0;
     margin-left: 5px;
     font-weight: 400;
-  }
+  }*/
+
+  .checkoutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px; 
+  margin: 50px auto; 
+  border: 1px solid rgb(251, 182, 9);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.checkoutContainer h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: rgb(63, 61, 61);
+}
+
+.checkoutContainer form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.checkoutContainer label {
+  font-size: 1rem;
+  margin: 10px 0 5px;
+  color: rgb(63, 61, 61);
+}
+
+.checkoutContainer input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.checkoutContainer input:focus {
+  border-color: rgb(251, 182, 9);
+  outline: none;
+  box-shadow: 0 0 5px rgba(251, 182, 9, 0.5);
+}
+
+.checkoutContainer .errorCheckout {
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* Botón de confirmar compra */
+.checkoutContainer button {
+  padding: 12px 20px;
+  border-radius: 5px;
+  background-color: gold;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  width: 100%;
+}
+
+.checkoutContainer button:hover {
+  background-color: darkgoldenrod;
+}
+
+/* Confirmación de orden */
+.orderConfirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.orderTextContainer h1 {
+  color: #4caf50;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.orderTextContainer h2 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.orderTextContainer h4 {
+  color: #888;
+}
+
+/* Botón de volver */
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2196f3;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.backButton:hover {
+  background-color: gold;
+}
+
+.backButton h4 {
+  margin: 0;
+  margin-left: 5px;
+  font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+    .checkoutContainer {
+      max-width: 90%;
+      padding: 15px;
+    }
+
+    .checkoutContainer h2 {
+      font-size: 1.6rem;
+    }
+
+    .checkoutContainer form {
+      width: 100%;
+    }
+
+    .checkoutContainer input {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+
+    .checkoutContainer button {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+
+    .orderConfirmation {
+      max-width: 90%;
+      padding: 15px;
+    }
+
+    .orderTextContainer h1 {
+      font-size: 1.5rem;
+    }
+
+    .orderTextContainer h2 {
+      font-size: 1rem;
+    }
+
+    .backButton {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkoutContainer {
+      max-width: 95%;
+    }
+
+    .checkoutContainer h2 {
+      font-size: 1.4rem;
+    }
+
+    .checkoutContainer input {
+      font-size: 0.8rem;
+    }
+
+    .orderTextContainer h1 {
+      font-size: 1.3rem;
+    }
+
+    .orderTextContainer h2 {
+      font-size: 0.9rem;
+    }
+
+    .backButton {
+      font-size: 0.8rem;
+    }
+}
