@@ -5,4 +5,18 @@
     padding: 30px;
     align-items: center;
     justify-content: center;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .productsContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+    .productsContainer {
+      justify-content: space-around;
+    }
 }
