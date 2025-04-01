@@ -91,39 +91,29 @@
     }
 }*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-/* 🔹 Contenedor Principal */
 .cardDetailContainer {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se acomoden en pantallas pequeñas */
+    flex-wrap: wrap;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     text-align: center;
     border: 1px solid rgb(251, 182, 9);
-    max-width: 1000px; /* Máximo ancho, pero adaptable */
-    width: 100%;
+    max-width: 90%;
     margin: 50px auto;
     position: relative;
     padding: 20px;
+    background: white;
 }
 
-/* 🔹 Contenedor de Imagen */
+/* Contenedor de imagen */
 .cardDetailImgContainer {
     width: 100%;
-    max-width: 400px; /* Se mantiene controlado en pantallas grandes */
+    max-width: 400px;
     height: auto;
-    margin: 10px auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .cardDetailImgContainer img {
@@ -132,125 +122,103 @@ html, body {
     border-radius: 10px;
 }
 
-/* 🔹 Información del Producto */
+/* Información del producto */
 .cardDetailInfo {
     flex: 1;
-    padding: 20px;
     text-align: left;
+    padding: 20px;
 }
 
 .cardDetailInfo h3 {
-    font-size: 2rem;
-    margin: 20px 0;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .itemDescription {
-    width: 100%;
-    max-width: 450px;
-    text-align: justify;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgb(63, 61, 61);
     margin-bottom: 20px;
 }
 
 .itemPrice {
-    font-weight: bold;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
-/* 🔹 Botón de Comprar */
+/* Botones de cantidad */
+.countButton {
+    margin: 10px;
+    padding: 8px 12px;
+    background-color: rgb(251, 182, 9);
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    &:hover {
+        background-color: rgb(227, 151, 6);
+    }
+}
+
+.countNumber {
+    font-size: 1.2rem;
+}
+
+/* Botón agregar */
 .itemButton {
-    display: inline-block;
-    margin-top: 20px;
+    display: block;
+    margin: 20px auto;
     background-color: rgb(251, 182, 9);
     color: black;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    text-align: center;
+    &:hover {
+        background-color: rgb(227, 151, 6);
+    }
 }
 
-.itemButton:hover {
-    background-color: rgb(227, 151, 6);
-}
-
-/* 🔹 Ícono de Cerrar */
+/* Ícono de volver */
 .itemIcon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: gold;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    &:hover {
+        background-color: rgb(227, 151, 6);
+    }
 }
 
-.itemIcon:hover {
-    background-color: rgb(227, 151, 6);
-}
-
-/* 🔹 Responsividad para móviles */
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
     .cardDetailContainer {
         flex-direction: column;
-        max-width: 90%;
-        padding: 15px;
-    }
-
-    .cardDetailImgContainer {
-        max-width: 100%;
         text-align: center;
+        padding: 15px;
     }
 
     .cardDetailInfo {
         text-align: center;
-        padding: 10px;
-    }
-
-    .cardDetailInfo h3 {
-        font-size: 1.5rem;
     }
 
     .itemDescription {
-        font-size: 1rem;
-        max-width: 100%;
+        width: 100%;
     }
 
-    .itemButton {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
-
-    .itemIcon {
-        top: 5px;
-        left: 5px;
-        width: 25px;
-        height: 25px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .cardDetailContainer {
-        max-width: 95%;
-    }
-
-    .cardDetailInfo h3 {
-        font-size: 1.3rem;
-    }
-
-    .itemDescription {
+    .countButton {
+        padding: 5px 10px;
         font-size: 0.9rem;
     }
 
     .itemButton {
-        font-size: 0.8rem;
+        width: 100%;
     }
 }
